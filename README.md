@@ -2,9 +2,6 @@
 
 [![Website][website-shield]][docs.iden3.io]
 [![Build Status][readthedocs-shield]][readthedocs-docs]
-[![Content License][content-license-shield]][content license]
-[![License][license-shield]][license]
-[![Chat][chat-shield]][chat]
 
 ## Overview
 
@@ -50,23 +47,15 @@ The surrounding source code is available under [GPL-3.0][license].
 
 Anyone is welcome to contribute to the documentation by submitting pull requests to this repository.
 
-*Please reade the [contribution guidelines][] first, to allow for smooth collaboration.*
+*Please read the [contribution guidelines][] first, to allow for smooth collaboration.*
 
 [website-shield]: https://img.shields.io/website/http/docs.iden3.io.svg?down_color=red&down_message=offline&style=flat-square&up_color=green&up_message=online
 [readthedocs-shield]: https://readthedocs.org/projects/pip/badge/
-[content-license-shield]: https://img.shields.io/github/package-json/contentLicense/iden3/docs.svg?style=flat-square&label=content&maxAge=3600
-[license-shield]: https://img.shields.io/github/license/iden3/docs.svg?style=flat-square&maxAge=3600
-[master-version-shield]: https://img.shields.io/github/package-json/v/iden3/docs/master.svg?label=latest&style=flat-square
-[prod-version-shield]: https://img.shields.io/github/package-json/v/iden3/docs/production.svg?label=published&style=flat-square
-[chat-shield]: https://img.shields.io/matrix/iden3:matrix.org.svg?style=flat-square&maxAge=3600&label=chat%20%28matrix%29
 [docs.iden3.io]: https://docs.iden3.io
 [readthedocs-docs]: https://iden3-docs.readthedocs.io
-[chat]: https://matrix.to/#/#iden3:matrix.org
 [readthedocs]: https://readthedocs.org
-[circleci]: https://circleci.com/gh/iden3/docs
-[github pages]: https://pages.github.com
 [content license]: https://github.com/iden3/iden3-docs/blob/master/CONTENT_LICENSE
 [license]: https://github.com/iden3/iden3-docs/blob/master/LICENSE
 [install readthedocs]: https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html
-[contribution guidelines]: https://github.com/iden3/docs/blob/master/CONTRIBUTING.md
+[contribution guidelines]: https://github.com/iden3/iden3-docs/blob/master/CONTRIBUTING.md
 [contribution]: #Contributing

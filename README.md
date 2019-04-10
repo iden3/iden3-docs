@@ -5,7 +5,7 @@
 
 ## Overview
 
-This repository contains the source code and comment for the iden3 documentations website.
+This repository contains the source code and comment for the iden3 documentation website.
 
 The website is generated and deployed using [readthedocs][].
 

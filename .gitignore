@@ -2,7 +2,7 @@
 *.sw*
 
 # Folders
-_build
+build
 
 # Prerequisites
 

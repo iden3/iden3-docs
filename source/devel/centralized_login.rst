@@ -7,7 +7,7 @@ Centralized Login
 
 .. topic:: Overview
 
-    This document will guide you through the steps required to integrate Iden3's technology into yor application's login.
+    This document will guide you through the steps required to integrate Iden3's technology into your application's login.
 
     :Date: 2019-04-05 
 
@@ -19,7 +19,7 @@ Centralized Login
 Introduction
 #############
 Iden3 is a complete decentralized identity management solution that allows users to leverage their pre-existing validated identities to
-proof they are who they claim to be and saving them the hassle of having to individually register with each service that requires a validated 
+proof they are who they claim to be, saving them the hassle of having to individually register with each service that requires a validated 
 identification.
 One of the direct applications of iden3 technology is to allow web services to reuse these identities for login into their portals.
 
@@ -32,7 +32,7 @@ requests login.
     :alt: alternate text
     :figclass: align-center
 
-Iden3 provides the SDK to care of requesting and verifying iden3's user identity so that the user is authenticated.
+Iden3 provides the SDK to take care of requesting and verifying iden3's user identity so that the user can be authenticated.
 
 Platforms supported
 ####################
@@ -54,7 +54,7 @@ In this example the external service includes a front-end and a back-end server.
 
 Front-End
 *********
-On the front-end side you will typically need to embed a button to start the login process and a place to display a QR code that the user can scan to complete the authentication.
+On the front-end side you will typically need to embed a button to start the login process, and a place to display a QR code that the user can scan to complete the authentication.
 After the button is pressed, the front-end makes a request to the back-end to start the identity authentication and waits for the response containing the QR code to be displayed and scanned by the user. 
 
 In the provided reference implementation this is achieved by JavaScript function *getLoginData()* found in frontend/index.js. This code shows how to :
@@ -68,7 +68,7 @@ Back-End
 
 Generating requests of identity assertion
 ------------------------------------------
-On the back-end side you will need to prepare a new API endpoint to handle the *requestIdenAssert* petitions from the front-end. In the reference implementation we use *GET/login*
+On the back-end side you will need to prepare a new API endpoint to handle the *requestIdenAssert()* petitions from the front-end. In the reference implementation we use *GET/login*
 by calling 
 
 .. code-block:: javascript

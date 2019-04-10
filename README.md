@@ -4,8 +4,6 @@
 [![Build Status][readthedocs-shield]][readthedocs-docs]
 [![Content License][content-license-shield]][content license]
 [![License][license-shield]][license]
-[![Master Version][master-version-shield]][releases]
-[![Production Version][prod-version-shield]][releases]
 [![Chat][chat-shield]][chat]
 
 ## Overview
@@ -62,14 +60,13 @@ Anyone is welcome to contribute to the documentation by submitting pull requests
 [prod-version-shield]: https://img.shields.io/github/package-json/v/iden3/docs/production.svg?label=published&style=flat-square
 [chat-shield]: https://img.shields.io/matrix/iden3:matrix.org.svg?style=flat-square&maxAge=3600&label=chat%20%28matrix%29
 [docs.iden3.io]: https://docs.iden3.io
-[readthedocs-docs]: https://circleci.com/gh/iden3/docs
-[releases]: https://github.com/iden3/docs/releases
+[readthedocs-docs]: https://iden3-docs.readthedocs.io
 [chat]: https://matrix.to/#/#iden3:matrix.org
 [readthedocs]: https://readthedocs.org
 [circleci]: https://circleci.com/gh/iden3/docs
 [github pages]: https://pages.github.com
-[content license]: https://github.com/iden3/docs/blob/master/CONTENT_LICENSE
-[license]: https://github.com/iden3/docs/blob/master/LICENSE
+[content license]: https://github.com/iden3/iden3-docs/blob/master/CONTENT_LICENSE
+[license]: https://github.com/iden3/iden3-docs/blob/master/LICENSE
 [install readthedocs]: https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html
 [contribution guidelines]: https://github.com/iden3/docs/blob/master/CONTRIBUTING.md
 [contribution]: #Contributing

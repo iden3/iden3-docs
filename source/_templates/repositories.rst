@@ -1,12 +1,11 @@
-.. developers:
+.. repositories:
 
 ##############################################
-DEVELOPERS
+REPOSITORY GUIDES
 ##############################################
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents
 
-   devel/centralized_login
 
 

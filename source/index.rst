@@ -13,5 +13,6 @@ Welcome to iden3's documentation!
    :maxdepth: 3
    :caption: Contents:
 
+   repositories
    developers
 

@@ -47,7 +47,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
-    'recommonmark',
+    'm2r'
 ]
 
 napoleon_google_docstring = False
@@ -61,8 +61,11 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 #
 #from recommonmark.parser import CommonMarkParser
-#source_parsers = {'.md': CommonMarkParser}
+
 source_suffix = ['.rst', '.md']
+#source_parsers = {
+       #'.md': CommonMarkParser,
+#}
 #source_suffix = '.rst'
 
 # The master toctree document.

@@ -14,8 +14,7 @@ def build_repo(filename, repodir):
          prev_repo = repo
          print repo.title()
          print len(repo)*"="
-         #print ".. toctree::\n   :maxdepth: 0\n   :caption: Contents:\n\n"
-         print ".. toctree::\n   :maxdepth: 3\n\n"
+         print ".. toctree::\n   :maxdepth: 1\n\n"
          section = "" 
          n_lines = 0
       n_lines +=1

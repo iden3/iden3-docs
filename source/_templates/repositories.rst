@@ -1,7 +1,7 @@
-.. repositories:
+.. _repositories:
 
 ##############################################
-REPOSITORY GUIDES
+Repository Guides
 ##############################################
 .. toctree::
    :maxdepth: 1

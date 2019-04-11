@@ -30,18 +30,24 @@ The surrounding source code is available under [GPL-3.0][license].
    cd iden3-docs
    ```
 
-2. Install [Readthedocs][install readthedocs] and dependencies
+2. Install [Readthedocs][install readthedocs] and dependencies.
    ``` shell
    pip install -r requirements.txt
+   sudo apt-get install pandoc
    ```
 
-3. Build documentation
+3. Collect iden3 documentation scattered across several repos.
+
+   ``` shell
+   make repo
+   ```
+4. Build documentation
 
    ``` shell
    make html
    ```
 
-4. Preview documentation in located in build/html/index.html.
+5. Preview documentation in located in build/html/index.html.
 
 ## Contributing
 

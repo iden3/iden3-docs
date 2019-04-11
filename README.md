@@ -47,7 +47,7 @@ The surrounding source code is available under [GPL-3.0][license].
    make html
    ```
 
-5. Preview documentation in located in build/html/index.html.
+5. Preview documentation located in *build/html/index.html*.
 
 ## Contributing
 

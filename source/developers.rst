@@ -1,7 +1,7 @@
-.. developers:
+.. _developers:
 
 ##############################################
-DEVELOPERS
+Developers
 ##############################################
 .. toctree::
    :maxdepth: 2

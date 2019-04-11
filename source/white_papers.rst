@@ -1,4 +1,4 @@
-.. white_papers:
+.. _white_papers:
 
 ##############################################
 White Papers

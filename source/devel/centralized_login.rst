@@ -7,7 +7,7 @@ Centralized Login
 
 .. topic:: Overview
 
-    This document will guide you through the steps required to integrate Iden3's technology into your application's login.
+    This document will guide you through the steps required to integrate iden3's technology into your application's login.
 
     :Date: 2019-04-05 
 
@@ -21,10 +21,9 @@ Introduction
 Iden3 is a complete decentralized identity management solution that allows users to leverage their pre-existing validated identities to
 proof they are who they claim to be, saving them the hassle of having to individually register with each service that requires a validated 
 identification.
-One of the direct applications of iden3 technology is to allow web services to reuse these identities for login into their portals.
+One of the direct applications of iden3's technology is to allow web services to reuse these identities for login into their portals.
 
-The diagram below shows the steps taken by your back-end to enable access to your application using iden3 identity system once the user
-requests login. 
+The diagram below shows the steps taken by your back-end to enable access to your application using iden3 identity system once the user requests to login. 
 
 .. figure:: ../_static/img/centralized_login_protocol.png
     :align: center
@@ -32,7 +31,7 @@ requests login.
     :alt: alternate text
     :figclass: align-center
 
-Iden3 provides the SDK to take care of requesting and verifying iden3's user identity so that the user can be authenticated.
+Iden3 provides the SDK to take care of requesting and verifying identity so that the user can be authenticated.
 
 Platforms supported
 ####################
@@ -45,7 +44,7 @@ Pre-requirements
 Minimum requirements for a functional centralized login include:
 
 #. iden3 wallet service has been deployed
-#. User  attempting to login has at last one valid identity.
+#. User  attempting to login has at least one valid identity.
 
 Integration
 #####################

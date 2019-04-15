@@ -26,13 +26,13 @@ Iden3 is an open source project offering a complete decentralized identity manag
           Submit an issue or pull request on the `GitHub repository
           <https://github.com/iden3/iden3-docs/issues>`_
 
-This documentation site includes the fillowing sections:
+This documentation site includes the following sections:
 
 * :ref:`developers` : guide on how to integrate iden3's software for specific applications.
 
-* :ref:`repositories` centralizes documentation scattered across different iden3's repos in a single place. 
+* :ref:`repositories` : centralizes documentation scattered across different iden3's repos in a single place. 
 
-* :ref:`white_papers` provides (will provide...) a description of iden3's technology.
+* :ref:`white_papers` : provides (will provide...) a description of iden3's technology.
 
 During the comming months, we will be sorting, improving and extending the documentation, so don't forget to come back. Thank you!!! 
 

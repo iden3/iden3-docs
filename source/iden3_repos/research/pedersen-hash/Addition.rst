@@ -1,18 +1,4 @@
-*Baby-Jubjub* is birationally equivalent to the Montgomery elliptic
-curve defined by
-
-.. math:: E_M : v^2 = u^3 + 168698 u^2 + u.
-
- The birational equivalence from :math:`E` to :math:`E_M` is the map
-
-.. math:: (x,y) \to (u,v) = \left( \frac{1 + y}{1 - y} , \frac{1 + y}{(1 - y)x} \right)
-
- with inverse from :math:`E_M` to :math:`E`
-
-.. math:: (u, v) \to (x, y) = \left(  \frac{u}{v}, \frac{u - 1}{u + 1}   \right).
-
- These results are from :raw-latex:`\cite[Theorem 3.2]{twisted}`. When
-adding points of elliptic curves in Montgomery form, one has to be
+When adding points of elliptic curves in Montgomery form, one has to be
 careful if the points being added are equal (doubling) or not (adding)
 and if one of the points is the point at infinity
 :raw-latex:`\cite{montgomery}`. Twisted Edwards curves have the
@@ -70,40 +56,3 @@ required in different forms of elliptic curves, see
                   &y_3 = \Lambda(x_1- x_3) - y_1.
               \end{split} 
               \end{aligned}
-
-1.2
-
-Elliptic curve: Baby-Jubjub
-===========================
-
-Twisted Edwards form
---------------------
-
-Montgomery form
----------------
-
-Arithmetic on the elliptic curve
-================================
-
-Addition of points
-------------------
-
-Multiplication by a scalar
---------------------------
-
-Pedersen hash
-=============
-
-[sec-ped]
-
-Set of generators
------------------
-
-Computation
------------
-
-There is no overflow
---------------------
-
-Number of constraints per bit
------------------------------

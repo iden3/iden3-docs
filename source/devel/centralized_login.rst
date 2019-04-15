@@ -51,6 +51,8 @@ Integration
 A JavaScript reference implementation of how a third party can integrate iden3's solution to login into their application can be found at https://github.com/iden3/centralized-login-demo.
 In this example the external service includes a front-end and a back-end server. We will assume this front-end/back-end division during our integration overview.
 
+Some examples on how the Go implementation is used can be found at https://github.com/iden3/go-iden3/blob/master/services/signedpacketsrv/signedpacket_test.go
+
 Front-End
 *********
 On the front-end side you will typically need to embed a button to start the login process, and a place to display a QR code that the user can scan to complete the authentication.
@@ -60,7 +62,7 @@ In the provided reference implementation this is achieved by JavaScript function
 
 * Send a request for a new *requestIdenAssert* packet to the centralized application back-end
 * Open a websocket between front-end and back-end 
-* Display QR code containing tje *requestIdenAssert* packet to be signed by iden3's wallet
+* Display QR code containing the *requestIdenAssert* packet to be signed by iden3's wallet
 
 Back-End
 ********
@@ -68,11 +70,18 @@ Back-End
 Generating requests of identity assertion
 ------------------------------------------
 On the back-end side you will need to prepare a new API endpoint to handle the *requestIdenAssert()* petitions from the front-end. In the reference implementation we use *GET/login*
-by calling 
+by calling JavaScript function
 
 .. code-block:: javascript
 
    const signatureRequest = iden3.protocols.login.newRequestIdenAssert(nonceDB, origin, timeout);
+
+or Go function:
+
+
+.. code-block:: c
+
+   requestIdenAssert := NewRequestIdenAssert(nonceDb, origin, timeout)
 
 where 
 
@@ -80,12 +89,16 @@ where
 * **origin:** domain of the emitter of the request, for example *'myweb.com'*
 * **timeout:** timeout in seconds, for example 2 minutes (*120*).
 
-nonceDB is obtained by calling the following function:
+nonceDB is obtained by calling the following JavaScript function:
 
 .. code-block:: javascript
 
    const nonceDB = new iden3.protocols.NonceDB();
 
+or Go function:
+
+.. code-block:: c
+   nonceDb := core.NewNonceDb()
 Once you have the *signatureRequest* object, you can return it back to the front-end so that it can be displayed.
 
 
@@ -94,18 +107,25 @@ Verifying signedPacket
 On the back-end you will also need to prepare a new API endpoint to handle the responses from iden3 wallet containing the *signedPacket*.
 In the reference implementation we use *POST /login* to allow the walled to send the signed data.
 
-To perform the verification in the newly added endpoint you just need to call *iden3js* library.
+To perform the verification in the newly added endpoint you just need to call *iden3js* library:
 
 .. code-block:: javascript
 
    const verified = iden3.protocols.login.verifySignedPacket(nonceDB, origin, signedPacket);
   
+or *go-iden3* library:
+
+.. code-block:: C
+
+	verified, err := signedPacketVerifier.
+		VerifySignedPacketIdenAssert(signedPacket, nonceDB, origin)
+
 where 
 
 * **nonceDB:** is the NonceDB object generated earlier. 
 * **origin:** domain of the emitter of the request, for example *'myweb.com'*
 * **signedPacket:** signed packet sent by iden3's wallet.
-* **verified:** is a boolean that indicates whether or not the verification is sucessful
+* **verified:** is *null* if verification fails.
 
 
 SDK installation
@@ -127,3 +147,21 @@ Import
 .. code-block:: javascript
 
    const iden3 = require('iden3');
+
+
+go-iden3
+********
+
+Installation
+------------
+
+.. code-block:: bash
+
+   go get github.com/iden3/go-iden3
+
+Import
+------
+
+.. code-block:: c
+
+   import { "github.com/iden3/go-iden3/services/signedpacketsrv" }

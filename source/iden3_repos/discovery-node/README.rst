@@ -54,25 +54,40 @@ Flow when a ``discovery-node`` receives an Id discover request:
 
    flow00
 
-Discovery flow: 1. ``discovery-node`` receives an https petition from
-the ``user`` asking for an identity info, from now, this
-``discovery-node`` will be the ``Requester`` 2. ``Requester`` checks if
-already knows a fresh copy of the data packet of the identity - in case
-that has the data, checks that the ``timestamp`` is not too old - if the
-data is fresh, returns it and finishes the process - if the identity
-data was not in its databases, ask to the network for it (following
-steps) 3. ``Requester`` creates ``Query`` packet asking for who is the
-relay of identity ``john@domain.eth`` 4. ``Requester`` sends the
-``Query`` packet into the ``Swarm Pss`` network under the topic
-``id_discovery`` - the ``Requester`` waits a configured amount of time,
-if the ``Answer`` don't comes inside that time window, returns an error
-msg through https to the ``user`` 5. the ``Id_Agent`` server of that
-identity will receive the ``Query`` packet and will see that is a user
-under its umbrella 6. ``Id_Agent`` server will answer the ``Answer``
-packet (with the proofs of validity, signature, etc) to the
-``Requester`` 7. ``Requester`` receives the ``Answer`` packet (verifies
-the signature), and now knows how to reach the Relay node of
-``john@domain.eth``, and can answer to the ``user``
+Discovery flow:
+
+1. ``discovery-node`` receives an https petition from the ``user``
+   asking for an identity info, from now, this ``discovery-node`` will
+   be the ``Requester``
+
+2. ``Requester`` checks if already knows a fresh copy of the data packet
+   of the identity
+
+   -  in case that has the data, checks that the ``timestamp`` is not
+      too old
+   -  if the data is fresh, returns it and finishes the process
+   -  if the identity data was not in its databases, ask to the network
+      for it (following steps)
+
+3. ``Requester`` creates ``Query`` packet asking for who is the relay of
+   identity ``john@domain.eth``
+
+4. ``Requester`` sends the ``Query`` packet into the ``Swarm Pss``
+   network under the topic ``id_discovery``
+
+   -  the ``Requester`` waits a configured amount of time, if the
+      ``Answer`` don't comes inside that time window, returns an error
+      msg through https to the ``user``
+
+5. the ``Id_Agent`` server of that identity will receive the ``Query``
+   packet and will see that is a user under its umbrella
+
+6. ``Id_Agent`` server will answer the ``Answer`` packet (with the
+   proofs of validity, signature, etc) to the ``Requester``
+
+7. ``Requester`` receives the ``Answer`` packet (verifies the
+   signature), and now knows how to reach the Relay node of
+   ``john@domain.eth``, and can answer to the ``user``
 
 ::
 

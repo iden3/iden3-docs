@@ -1,8 +1,5 @@
 .. _research:
 
-Research Papers
-###############
-
 .. toctree::
    :maxdepth: 1
 

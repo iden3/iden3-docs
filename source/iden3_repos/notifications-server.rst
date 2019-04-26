@@ -1,7 +1,7 @@
 .. _notifications-server:
 
 Notifications Server
-####################
+====================
 
 .. toctree::
    :maxdepth: 1

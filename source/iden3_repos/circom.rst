@@ -1,7 +1,7 @@
 .. _circom:
 
 Circom
-######
+======
 
 .. toctree::
    :maxdepth: 1

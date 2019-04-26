@@ -64,7 +64,7 @@ iden3_tech_docs = {
                            'technology/claims', 
                            'technology/identity' , 
                            'technology/merkle_tree',
-                           'techology/zeroknowledge'
+                           'technology/zeroknowledge'
                           ],
                           [
                            'iden3js/src/protocols/login_merge',
@@ -72,6 +72,7 @@ iden3_tech_docs = {
                            'technology/ims_overview',
                            'technology/name_server',
                            'technology/identification_server',
+                           'technology/notification_server',
                            'technology/relayer',
                            'technology/wallet'
                           ]
@@ -81,13 +82,16 @@ iden3_tech_docs = {
 iden3_publications_docs = {  
                'folder': 'publications', 
                'main'  : 'publications.rst',
-               'sub_sections' : ['Research Papers'],
-               'maxdepth' : [1],
-               'hidden'   : [False],
-               'caption'  : [''],
+               'sub_sections' : ['Research Papers','Presentations'],
+               'maxdepth' : [1,1],
+               'hidden'   : [False,False],
+               'caption'  : ['',''],
                'docs' : [
                           [
                            'iden3_repos/research', 
+                          ],
+                          [ 
+                            'docs/presentations'
                           ],
                         ]
 }
@@ -341,7 +345,7 @@ research_docs = {
    'url' : 'http://github.com/iden3/research.git',
    'folder' : 'research',
    'main'  : 'research.rst',
-   'sub_sections' : ['Research Papers'],
+   'sub_sections' : [''],
    'maxdepth' : [1],
    'hidden'   : [False],
    'caption'  : [False],
@@ -424,7 +428,14 @@ latex_docs = {
                     ".. contents::    :depth: 3\n\n",
                     ".. contents::    :depth: 3\n\n",
                     ".. contents::    :depth: 3\n\n",
-                        ]
+                        ],
+                  'pdf_link' : [ 
+                              'Baby-Jubjub.pdf',
+                              'MerkleTree.pdf',
+                              'Ed-DSA.pdf',
+                              'Pedersen-Hash.pdf',
+                            
+                               ]
 }
 
 iden3_repo = [ iden3js_docs, goiden3_docs, tx_forwarder_docs, 
@@ -432,7 +443,7 @@ iden3_repo = [ iden3js_docs, goiden3_docs, tx_forwarder_docs,
                discovery_node_docs, citrus_docs, snarkjs_docs, notifications_server_docs,
                wasmbuilder_docs, research_docs ]                       
 
-iden3_docs = [ iden3_devel_docs, iden3_tech_docs]
+iden3_docs = [ iden3_devel_docs, iden3_tech_docs, iden3_publications_docs]
 
 iden3_doc_source_folder = "./source"
 iden3_doc_tmp_folder = "./source/tmp"
@@ -440,3 +451,4 @@ iden3_doc_template_folder = "./source/_templates"
 iden3_doc_repo_folder = "./source/iden3_repos"
 iden3_rst_filename = "./source/tmp/rst_list.txt"
 iden3_tar_filename = "./source/iden3_repo_files.tgz"
+iden3_doc_pdf_folder = "./source/docs"

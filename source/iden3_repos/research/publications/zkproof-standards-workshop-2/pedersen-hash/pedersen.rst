@@ -412,3 +412,8 @@ Libert, B., F. Mouhartem, and D. Stehlé. 1016–17AD. “Tutorial 8.”
 .. |image| image:: figures/pedersen-multiplication.png
 .. |image| image:: figures/pedersen-multiplication-selector.png
 
+
+PDF Link
+========
+
+:download:`Pedersen Hash <./Pedersen-Hash.pdf>`

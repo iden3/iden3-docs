@@ -97,9 +97,9 @@ def process_files(ftype):
 def build_heading(heading_text,level):
     heading_len = len(heading_text)
     if level==1 or level==2:
-       heading_marker = "#"
-    elif level==3:
        heading_marker = "="
+    elif level==3:
+       heading_marker = "#"
     elif level==4:
        heading_marker = "+"
 
@@ -140,6 +140,10 @@ def add_docs(section, base_dir, idx, fhandle):
         doc = strip_dir(doc_list[0][:-4],base_dir)
         fhandle.write("   "+doc)
         fhandle.write("\n")
+
+def append_to_file(string, fname):
+      with open(fname,"a") as f:
+         f.write(string)
 
 def prepend_to_file(string, fname):
       with open(fname,"r+") as f:
@@ -195,6 +199,9 @@ def get_fname(fname):
    return_fname = fname[idx[-1]+1:]
    return return_fname
 
+def build_download_link(string, link):
+  return "\n:download:`"+string+" <" + link + ">`"
+
 def build_latex_doc():
    curdir = os.getcwd()
    for docs_idx, doc in enumerate(latex_docs['main']):
@@ -204,6 +211,10 @@ def build_latex_doc():
       tex_dirname = get_dirname_from_fname(iden3_doc_tmp_folder+"/"+latex_docs['docs'][docs_idx]) 
       os.chdir(tex_dirname)
       command="pandoc " + tex_fname + " -o " + rst_fname + " --bibliography " + bib_fname  
+      os.system(command)
+      append_to_file(build_heading("PDF Link", 2), rst_fname)
+      append_to_file(build_download_link(latex_docs['title'][docs_idx],"./"+latex_docs['pdf_link'][docs_idx]),rst_fname)
+      command = "cp " +curdir+"/"+iden3_doc_pdf_folder +"/" + latex_docs['pdf_link'][docs_idx] +" ."
       os.system(command)
       os.chdir(curdir)
 
@@ -255,9 +266,9 @@ def filter_files_blacklist(file_list):
       
    return file_list
 
-def copy_files(rst_files, png_files):
+def copy_files(files_to_copy):
     f = open(iden3_rst_filename,"w")
-    for filename in rst_files + png_files:
+    for filename in files_to_copy:
       f.write(filename)
       f.write("\n")
 
@@ -316,16 +327,18 @@ def build_iden3_doc():
 
   # Generate .rst list
   rst_files = find_files_bytype("rst", iden3_doc_tmp_folder)
+  pdf_files = find_files_bytype("pdf", iden3_doc_tmp_folder)
   rst_files = filter_files_blacklist(rst_files)
   png_files = find_files_bytype("png", iden3_doc_tmp_folder)
-  copy_files(rst_files, png_files)
+  copy_files(rst_files + png_files + pdf_files)
 
   rst_files = filter_files_docs(rst_files)
  
+  build_repo_doc(rst_files)
+
   # Build documentation folder
   build_documentation()
 
-  build_repo_doc(rst_files)
                      
                   
 if __name__== "__main__":

@@ -1,7 +1,7 @@
 .. _discovery-node:
 
 Discovery Node
-##############
+==============
 
 .. toctree::
    :maxdepth: 1

@@ -1,7 +1,7 @@
 .. _snarkjs:
 
 SnarkJS
-#######
+=======
 
 .. toctree::
    :maxdepth: 1

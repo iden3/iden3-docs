@@ -1,7 +1,7 @@
 .. _websnark:
 
 Websnark
-########
+========
 
 .. toctree::
    :maxdepth: 1

@@ -1,7 +1,7 @@
 .. _tx-forwarder:
 
 Tx Forwarder
-############
+============
 
 .. toctree::
    :maxdepth: 1

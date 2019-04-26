@@ -1,7 +1,7 @@
 .. _citrus:
 
 Citrus
-######
+======
 
 .. toctree::
    :maxdepth: 1

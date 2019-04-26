@@ -2,7 +2,7 @@
 
 
 Terminology
-###########
+===========
 
 .. toctree::
    :maxdepth: 1
@@ -10,9 +10,10 @@ Terminology
    technology/claims
    technology/identity
    technology/merkle_tree
+   technology/zeroknowledge
 
 Services & Protocols
-####################
+====================
 
 .. toctree::
    :maxdepth: 1
@@ -21,5 +22,6 @@ Services & Protocols
    technology/claim_server
    technology/ims_overview
    technology/name_server
+   technology/notification_server
    technology/relayer
    technology/wallet

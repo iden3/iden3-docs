@@ -387,3 +387,8 @@ http://dl.acm.org/citation.cfm?id=648117.746614.
 .. |image| image:: figures/multiplication-SEQ-window.png
 .. |image| image:: figures/multiplication-SEQ-prime.png
 
+
+PDF Link
+========
+
+:download:`Baby Jub-jub <./Baby-Jubjub.pdf>`

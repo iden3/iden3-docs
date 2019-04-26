@@ -1,7 +1,7 @@
 .. _go-iden3:
 
 Go-Iden3
-########
+========
 
 .. toctree::
    :maxdepth: 1

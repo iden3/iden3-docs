@@ -377,16 +377,16 @@ iden3_default_section = {
 
 merged_docs = {
                 'main'  : [
-                            'iden3_repos/iden3js/src/protocols/login_merge.rst',
+                            'iden3js/src/protocols/login_merge.rst',
                           ],
                 'title' : [
                             'Login Protocol'
                           ],
                 'docs' : [
                           [
-                           'iden3_repos/iden3js/src/protocols/login_spec', 
-                           'iden3_repos/iden3js/src/protocols/README',
-                           'iden3_repos/iden3js/src/protocols/login_spec_rationale',
+                           'iden3js/src/protocols/login_spec', 
+                           'iden3js/src/protocols/README',
+                           'iden3js/src/protocols/login_spec_rationale',
                           ],
                          ],
                  'prepend' : [

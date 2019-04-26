@@ -285,7 +285,7 @@ def read_document(fname):
 
 def merge_documents():
   for doc_idx, doc in enumerate(merged_docs['main']):
-       f = open(iden3_doc_source_folder+"/"+doc,"w")
+       f = open(iden3_doc_tmp_folder+"/"+doc,"w")
        add_heading(merged_docs['title'][doc_idx],1,f)
        if merged_docs['prepend'][doc_idx] is not '':
           f.write("\n")
@@ -293,7 +293,8 @@ def merge_documents():
           f.write("\n")
 
        for parts in merged_docs['docs'][doc_idx]:
-          content = read_document(iden3_doc_source_folder+"/"+parts+".rst")
+          content = read_document(iden3_doc_tmp_folder+"/"+parts+".rst")
+          os.remove(iden3_doc_tmp_folder+"/"+parts+".rst")
           f.write("\n")
           f.write(content)
  
@@ -311,6 +312,8 @@ def build_iden3_doc():
 
   build_latex_doc()
 
+  merge_documents()
+
   # Generate .rst list
   rst_files = find_files_bytype("rst", iden3_doc_tmp_folder)
   rst_files = filter_files_blacklist(rst_files)
@@ -318,8 +321,6 @@ def build_iden3_doc():
   copy_files(rst_files, png_files)
 
   rst_files = filter_files_docs(rst_files)
- 
-  merge_documents()
  
   # Build documentation folder
   build_documentation()

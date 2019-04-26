@@ -1,279 +1,104 @@
 .. _repositories:
 
+Services and Infrastructure 
 ##############################################
-Repository Guides
-##############################################
+
+Basic services and infrastructure libraries.
+
+.. list-table::
+   :widths: 20 80
+   :header-rows: 1
+
+   * - Repo
+     - Description
+   * - iden3js_
+     - Javascript client library                    
+   * - go-iden3_
+     - Go implemenation of the iden3 system   
+   * - tx-forwarder_
+     - Implementation of server that pays gas on behalf of user signed transactions for specified 
+       smart contracts in ethereum blockchain   
+   * - discovery-node_
+     - Decentralized discovery protocol implementation          
+   * - notification-server_
+     - Implementation of a notification server to  push notifications to user identity wallets 
+
+.. _iden3js: https://github.com/iden3/iden3js  
+.. _go-iden3: https://github.com/iden3/go-iden3  
+.. _tx-forwarder: https://github.com/iden3/tx-forwarder 
+.. _discovery-node: https://github.com/iden3/discovery-node 
+.. _notification-server: https://github.com/iden3/notifications-server 
+
 .. toctree::
    :maxdepth: 1
-   :caption: Contents
+   :hidden:
+   :caption: Services & Infrastructure:
+
+   iden3_repos/iden3js
+   iden3_repos/go-iden3
+   iden3_repos/tx-forwarder
+   iden3_repos/discovery-node
+   iden3_repos/notifications-server
 
 
+Zero Knowledge Proof 
+#####################
+zkSNARKs related utilities.
 
+.. list-table::
+   :widths: 20 80
+   :header-rows: 1
 
-Iden3Js
-=======
+   * - Repo
+     - Description
+   * - circom_ 
+     - zkSNARKs circut compiler
+   * - circomlib_
+     -  Circuit libraries implementedin in circom
+   * - snarkjs_
+     - zkSNARKs Javascript implementation (setup, proof, verifier and witness generation)
+   * - websnark_ 
+     - A fast zkSNARKs proof generator written in native Web Assembly
+
+.. _circom: https://github.com/iden3/circom
+.. _circomlib: https://github.com/iden3/circomlib
+.. _snarkjs: https://github.com/iden3/snarkjs
+.. _websnark: https://github.com/iden3/websnrks
+
 .. toctree::
    :maxdepth: 1
+   :hidden:
+   :caption: ZKProof:
+
+   iden3_repos/circom
+   iden3_repos/circomlib
+   iden3_repos/snarkjs
+   iden3_repos/websnark
+
+Misc
+####
+Miscellaneous utilities.
+
+.. list-table::
+   :widths: 20 80
+   :header-rows: 1
+
+   * - Repo
+     - Description
+   * - citrus_ 
+     - Continuous integration testing for iden3 system
+   * - wasmbuilder_ 
+     - Javascript library to simplify writing Web Assembly code
 
 
+.. _citrus: https://github.com/iden3/citrus
+.. _wasmbuilder: https://github.com/iden3/wasmbuilder
 
-   iden3_repos/iden3js/README.md
 
-   iden3_repos/iden3js/flow.md
-
-   iden3_repos/iden3js/src/protocols/login_spec_rationale.md
-
-   iden3_repos/iden3js/src/protocols/README.md
-
-   iden3_repos/iden3js/src/protocols/login_spec.md
-
-Tx-Forwarder
-============
 .. toctree::
    :maxdepth: 1
-
-
-
-   iden3_repos/tx-forwarder/README.md
-
-Go-Iden3
-========
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/go-iden3/cmd/backupserver/README.md
-
-   iden3_repos/go-iden3/merkletreeDoc/merkletree.md
-
-   iden3_repos/go-iden3/README.md
-
-   iden3_repos/go-iden3/crypto/README.md
-
-   iden3_repos/go-iden3/Relay.md
-
-Circom
-======
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/circom/TUTORIAL.md
-
-   iden3_repos/circom/README.md
-
-Circomlib
-=========
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/circomlib/README.md
-
-Websnark
-========
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/websnark/README.md
-
-Discovery-Node
-==============
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/discovery-node/README.md
-
-Research
-========
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/research/README.md
-
-Citrus
-======
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/citrus/README.md
-
-Snarkjs
-=======
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/snarkjs/README.md
-
-Notifications-Server
-====================
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/notifications-server/README.md
-
-Wasmbuilder
-===========
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/wasmbuilder/README.md
-
-Research
-========
-.. toctree::
-   :maxdepth: 1
-
-
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/description.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/implementation.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/background.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/standard.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/terminology.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/challenges.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/security.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/implementation/mimc7.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/implementation/fig-mimc7.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/implementation/example.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/terminology/nodes.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/terminology/proofs/pf-nm-empty.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/terminology/proofs/pf-m.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/terminology/proofs/pf-nm-different.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/terminology/proofs/pf-nm.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/terminology/Proofs.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/motivation.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/merkle-tree/scope.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/Preamble.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/Standard.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/baby-jubjub-edwards.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/main.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/description.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/background.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/baby-jubjub.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/addition.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/multiplication.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/intellectual-property.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/baby-jubjub-montgomery.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/motivation.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/scope.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/Structure.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/description.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/standard.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/terminology.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/mimc7.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/baby-jubjub.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/addition.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/multiplication.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/fig-mimc7.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/ed-dsa/scope.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/pedersen-definition.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/main.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/description.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/implementation.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/background.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/baby-jubjub.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/multiplication.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/challenges.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/no-overflow.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/intellectual-property.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/motivation.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/computation.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/cost.rst
-
-   iden3_repos/research/publications/zkproof-standards-workshop-2/pedersen-hash/scope.rst
-
-   iden3_repos/research/pedersen-hash/BabyJubJub.rst
-
-   iden3_repos/research/pedersen-hash/Main.rst
-
-   iden3_repos/research/pedersen-hash/BabyJubJub-Mont.rst
-
-   iden3_repos/research/pedersen-hash/BabyJubJub-TEd.rst
-
-   iden3_repos/research/pedersen-hash/Multiplication.rst
-
-   iden3_repos/research/pedersen-hash/Computation.rst
-
-   iden3_repos/research/pedersen-hash/Preamble.rst
-
-   iden3_repos/research/pedersen-hash/NoOverflow.rst
-
-   iden3_repos/research/pedersen-hash/Ped-def.rst
-
-   iden3_repos/research/pedersen-hash/Addition.rst
-
-   iden3_repos/research/pedersen-hash/Arithmetic.rst
-
-   iden3_repos/research/pedersen-hash/Cost.rst
-
+   :hidden:
+   :caption: Misc:
+
+   iden3_repos/citrus
+   iden3_repos/wasmbuilder

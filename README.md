@@ -31,15 +31,17 @@ The surrounding source code is available under [GPL-3.0][license].
    ```
 
 2. Install [Readthedocs][install readthedocs] and dependencies.
+
    ``` shell
    pip install -r requirements.txt
-   sudo apt-get install pandoc
+   sudo apt-get update
+   sudo apt-get install pandoc pandoc-citeproc
    ```
 
 3. Collect iden3 documentation scattered across several repos.
 
    ``` shell
-   make repo
+   make doc
    ```
 4. Build documentation
 

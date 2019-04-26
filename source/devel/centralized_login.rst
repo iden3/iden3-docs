@@ -1,4 +1,4 @@
-.. centralized_login:
+.. _centralized_login:
 
 
 ##############################################

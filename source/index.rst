@@ -28,11 +28,13 @@ Iden3 is an open source project offering a complete decentralized identity manag
 
 This documentation site includes the following sections:
 
-* :ref:`developers` : guide on how to integrate iden3's software for specific applications.
+* :doc:`Developers <developers>` : guide on how to integrate iden3's software for specific applications.
 
-* :ref:`repositories` : centralizes documentation scattered across different iden3's repos in a single place. 
+* :doc:`Repository Guide <repositories>` : centralizes documentation scattered across different iden3's repos in a single place. 
 
-* :ref:`white_papers` : provides (will provide...) a description of iden3's technology.
+* :doc:`Technology <technology>` : provides a description of iden3's technology.
+
+* :doc:`Publications <publications>` : includes articles and papers authored by iden3.
 
 During the comming months, we will be sorting, improving and extending the documentation, so don't forget to come back. Thank you!!! 
 
@@ -42,11 +44,25 @@ During the comming months, we will be sorting, improving and extending the docum
    :hidden:
    :caption: Developers
 
-   devel/centralized_login
+   developers
 
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Repository Guides
+   :caption: Repository Guide
 
    repositories
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Technology
+
+   technology
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Publications
+
+   publications

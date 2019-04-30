@@ -4,6 +4,26 @@ Merkle Tree
 
 .. contents::    :depth: 3
 
+.. raw:: latex
+
+   \maketitle 
+
+.. raw:: latex
+
+   \vspace{1cm}
+
+.. raw:: latex
+
+   \tableofcontents
+
+.. raw:: latex
+
+   \vspace{0.5cm}
+
+.. raw:: latex
+
+   \newpage
+
 Scope
 =====
 
@@ -31,8 +51,8 @@ fake blocks (Wikipedians, n.d.).
 Background
 ==========
 
-*We are still working on the literature compending the state of the art
-of this area.*
+We are still working on the literature compending the state of the art
+of this area.
 
 Terminology
 ===========
@@ -40,32 +60,35 @@ Terminology
 The following concepts are definitions and properties we assume across
 the document.
 
--  The leaves of the *Merkle tree* consist of key-value pairs
+-  The leaves of the Merkle tree consist of key-value pairs
    :math:`(k,v)`. We distinguish three different nodes:
 
-   -  *Empty node*: A vertex that stores the key and value zero.
+   -  Empty node: A vertex that stores the key and value zero.
 
-   -  *Leaf*: A vertex with both empty children.
+   -  Leaf: A vertex with both empty children.
 
-   -  *Internal node*: A vertex with at least one non-empty child. The
+   -  Internal node: A vertex with at least one non-empty child. The
       value is and the key such. It has the hash of its children.
 
--  A *Merkle audit path* for a leaf in a Merkle tree is the shortest
-   list of additional nodes in the tree required to compute the root
-   hash for that tree.
+-  A Merkle audit path for a leaf in a Merkle tree is the shortest list
+   of additional nodes in the tree required to compute the root hash for
+   that tree.
 
 -  If the root computed from the audit path matches the true root, then
-   the audit path is a *proof of membership* for that leaf in the tree.
+   the audit path is a proof of membership for that leaf in the tree.
 
--  Otherwise, it is a *proof of non-membership* for that leaf in the
-   tree.
+-  Otherwise, it is a proof of non-membership for that leaf in the tree.
+
+.. raw:: latex
+
+   \centering
 
 |image|
 
 Challenges
 ==========
 
-*Work in progress*.
+Work in progress.
 
 Description
 ===========
@@ -82,22 +105,26 @@ Description
   starting by the less significant bit and from the root of :math:`T`,
   it descents the tree by taking the left edge if there is a 0 and right
   one if there is a 1.
-| When adding an entry :math:`e`, we may not (see Sec. [sec-security])
-  go down to the last level of the tree (by last we mean looking at all
-  the bits, length of which depends on the hash function :math:`H`).
-  What we do instead, is go down through the path until we find a node
-  without siblings (a leaf). If the leaf is empty, we store :math:`e`.
-  Otherwise, that node stores some other :math:`e'` (as non-empty leafs
-  store claims) with :math:`H(e') = H'_{path}`. This means that
-  :math:`H_{path}` and :math:`H'_{path}` start with the same sequence of
-  bits. We compare both hashes and go down the tree until the first
-  different bit. these two values and find the first different bit
-  (included). Then we store :math:`e` and :math:`e'` in their
+| When adding an entry :math:`e`, we may not (see Sec.
+  `7 <#sec-security>`__) go down to the last level of the tree (by last
+  we mean looking at all the bits, length of which depends on the hash
+  function :math:`H`). What we do instead, is go down through the path
+  until we find a node without siblings (a leaf). If the leaf is empty,
+  we store :math:`e`. Otherwise, that node stores some other :math:`e'`
+  (as non-empty leafs store claims) with :math:`H(e') = H'_{path}`. This
+  means that :math:`H_{path}` and :math:`H'_{path}` start with the same
+  sequence of bits. We compare both hashes and go down the tree until
+  the first different bit. these two values and find the first different
+  bit (included). Then we store :math:`e` and :math:`e'` in their
   corresponding leafs of the path.
 | As an example, consider :math:`e` such that
   :math:`H_{path}=0111111...` and the Merkle tree below where in each
   leaf there is represented the value (and not the key) of each stored
   piece of data:
+
+.. raw:: latex
+
+   \centering
 
 |image|
 
@@ -107,6 +134,10 @@ leaf containing the value 0704eaec of some :math:`e'` with
 :math:`H'_{path}`, the 7th bit is the first different bit. This means,
 that we should go down to the 7th level and store there the entries as
 shown in next figure:
+
+.. raw:: latex
+
+   \centering
 
 |image|
 
@@ -127,6 +158,14 @@ shown in next figure:
 | The procedure to store an entry in a Merkle tree is described below in
   pseudocode.
 
+.. raw:: latex
+
+   \setstretch{1.2}
+
+.. raw:: latex
+
+   \Procedure{Insert Entry $e$ in Merkle Tree $T$ with Root $r$}{}
+
 :math:`H_{path} \gets \text{GetPath($e$)}`
 :math:`b \gets \text{LeastSignificantBit($H_{Index}$)}`
 :math:`r \gets e` :math:`r \gets e`
@@ -139,17 +178,24 @@ Leaf(\ :math:`b_0...b_j`)\ :math:`\gets e`
 Leaf(\ :math:`b_0...b'_j`)\ :math:`\gets e'`
 RecalculateIntermediateNodeValues(\ :math:`T`)
 
+.. raw:: latex
+
+   \newpage
+   {\it We are working on 4 more procedures}
+
 | : On one side, DELETE of entries and UPDATE of the tree. On the other
   side, the generation of MEMBERSHIP proofs and generation of
   NON-MEMBERSHIP proofs.
-| These last two procedure, although *we are working on explaining them
-  in detail in the following delivery*, they have already been
+| These last two procedure, although we are working on explaining them
+  in detail in the following delivery, they have already been
   implemented in GoLang and JavaScript in the following two
   repositories:
 
 -  https://github.com/iden3/go-iden3/blob/master/merkletree/
 
 -  https://github.com/iden3/iden3js/tree/master/src/sparse-merkle-tree
+
+.. _sec-security:
 
 Security
 ========
@@ -180,6 +226,14 @@ Intellectual Property
 
 We will release the final version of this proposal under creative
 commons, to ensure it is freely available to everyone.
+
+.. raw:: latex
+
+   \addcontentsline{toc}{section}{References}
+
+.. raw:: latex
+
+   \bibliographystyle{acm}
 
 .. raw:: html
 

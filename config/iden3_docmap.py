@@ -440,7 +440,7 @@ latex_docs = {
 
 iden3_repo = [ iden3js_docs, goiden3_docs, tx_forwarder_docs, 
                circom_docs, circomlib_docs, websnark_docs,
-               discovery_node_docs, citrus_docs, snarkjs_docs, notifications_server_docs,
+               discovery_node_docs, snarkjs_docs, notifications_server_docs,
                wasmbuilder_docs, research_docs ]                       
 
 iden3_docs = [ iden3_devel_docs, iden3_tech_docs, iden3_publications_docs]

@@ -27,7 +27,7 @@ You just need to import the websnark.js found in the build directory.
 
 .. code:: html
 
-    <script src="websnark.js" />
+   <script src="websnark.js" />
 
 This library has a single javascript function:
 
@@ -47,20 +47,20 @@ IMPORTANT: Please be sure you run your setup with ``--protocol groth`` websnark 
 
 ::
 
-    node ../tools/buildwitness.js -i witness.json -o witness.bin
+   node ../tools/buildwitness.js -i witness.json -o witness.bin
 
 provingKey is the binary buffer with the binary representation of the
 proving key.
 
-Check the tool tools/buildpkey.js to convert a proving\_key.json file
+Check the tool tools/buildpkey.js to convert a proving_key.json file
 generated in `snarkjs <https://github.com/iden3/snarkjs>`__ to a
-proving\_key.bin file that can be used directly with this library.
+proving_key.bin file that can be used directly with this library.
 
 ::
 
-    node ../tools/buildpkey.js -i proving_key.json -o proving_key.bin
+   node ../tools/buildpkey.js -i proving_key.json -o proving_key.bin
 
-The result is a JSON object with pi\_a, pi\_b and pi\_c points.
+The result is a JSON object with pi_a, pi_b and pi_c points.
 
 You can use the stringified version of this JSON as a proof.json in
 `snarkjs <https://github.com/iden3/snarkjs>`__
@@ -70,61 +70,61 @@ and generates the proof when the button is pressed.
 
 .. code:: html
 
-    <html>
-    <header>
-    </header>
-    <script src="websnark.js"></script>
-    <script>
+   <html>
+   <header>
+   </header>
+   <script src="websnark.js"></script>
+   <script>
 
-    var witness;
-    var proving_key;
+   var witness;
+   var proving_key;
 
-    function onLoad() {
+   function onLoad() {
 
-        fetch("proving_key.bin").then( (response) => {
-            return response.arrayBuffer();
-        }).then( (b) => {
-            provingKey = b;
-        });
+       fetch("proving_key.bin").then( (response) => {
+           return response.arrayBuffer();
+       }).then( (b) => {
+           provingKey = b;
+       });
 
-        fetch("witness.bin").then( (response) => {
-            return response.arrayBuffer();
-        }).then( (b) => {
-            witness = b;
-        });
-    }
+       fetch("witness.bin").then( (response) => {
+           return response.arrayBuffer();
+       }).then( (b) => {
+           witness = b;
+       });
+   }
 
-    function calcProof() {
-        const start = new Date().getTime();
-        document.getElementById("time").innerHTML = "processing....";
-        document.getElementById("proof").innerHTML = "";
+   function calcProof() {
+       const start = new Date().getTime();
+       document.getElementById("time").innerHTML = "processing....";
+       document.getElementById("proof").innerHTML = "";
 
-        window.genZKSnarkProof(witness, provingKey).then((p)=> {
-            const end = new Date().getTime();
-            const time = end - start;
-            document.getElementById("time").innerHTML = `Time to compute: ${time}ms`;
-            document.getElementById("proof").innerHTML = JSON.stringify(p, null, 1);
-        });
-    }
+       window.genZKSnarkProof(witness, provingKey).then((p)=> {
+           const end = new Date().getTime();
+           const time = end - start;
+           document.getElementById("time").innerHTML = `Time to compute: ${time}ms`;
+           document.getElementById("proof").innerHTML = JSON.stringify(p, null, 1);
+       });
+   }
 
-    </script>
-    <body onLoad="onLoad()">
-    <h1>iden3</h1>
-    <h2>Zero knowledge proof generator</h2>
-    <button onClick="calcProof()">Test</button>
-    <div id="time"></div>
-    <pre id="proof"></pre>
+   </script>
+   <body onLoad="onLoad()">
+   <h1>iden3</h1>
+   <h2>Zero knowledge proof generator</h2>
+   <button onClick="calcProof()">Test</button>
+   <div id="time"></div>
+   <pre id="proof"></pre>
 
-    </body>
-    </html>
+   </body>
+   </html>
 
 You can test it by running a web server on the example directory
 
 ::
 
-    npm -g install http-server
-    cd example
-    http-server .
+   npm -g install http-server
+   cd example
+   http-server .
 
 And then navegate to http://127.0.0.1:8080
 
@@ -133,19 +133,19 @@ tested with snarkjs
 
 ::
 
-    snarkjs verify
-    ``
+   snarkjs verify
+   ``
 
-    ## Building wasm.js
+   ## Building wasm.js
 
 npm run build
 
 ::
 
 
-    ## Testing
+   ## Testing
 
-npm test \`\`\`
+npm test \``\`
 
 License
 -------

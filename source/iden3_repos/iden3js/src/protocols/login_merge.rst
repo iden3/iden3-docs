@@ -17,8 +17,7 @@ For the login case, the user desires to assert a particular identity (an
 ethereum address in this case) to a server so that they are allowed
 access into the service while being identified.
 
-.. figure:: login_overview.png
-   :alt: 
+|image0|
 
 Assumptions
 -----------
@@ -39,13 +38,12 @@ What is needed
 Protocol flow
 -------------
 
-.. figure:: login_flow.png
-   :alt: 
+|image1|
 
 Challenges contain a cryptographic nonce and have a timeout that
 indicates the validity of the nonce in the challenge. A signed challenge
 with a timed out nonce must be rejected by the server. The server must
-store a list of not timed out nonces that haven't been signed yet to
+store a list of not timed out nonces that haven’t been signed yet to
 guarantee freshness.
 
 A cryptographic nonce must be securely generated and long enough to
@@ -58,15 +56,15 @@ A signature may be requested as follows:
 
 ::
 
-    {
-      header: {
-        typ: iden3.sig.v0_1
-      }
-      body: {
-        type: TYPE
-        data: DATA
-      }
-    }
+   {
+     header: {
+       typ: iden3.sig.v0_1
+     }
+     body: {
+       type: TYPE
+       data: DATA
+     }
+   }
 
 The user will generate a packet following the signature protocol
 specification, that may contain data from a signature request, or may be
@@ -81,23 +79,23 @@ elements are specified by the ``typ`` (signature packet) in the header.
 
 ::
 
-    JWS_PAYLOAD = {
-      type: TYPE
-      data: DATA
-      form: FORM
-      ksign: str # ksing public key in compressed form
-      proofKSing: proofClaim # Proof of authorize k sign claim (which contains the public key in compressed form)
-    }
+   JWS_PAYLOAD = {
+     type: TYPE
+     data: DATA
+     form: FORM
+     ksign: str # ksing public key in compressed form
+     proofKSing: proofClaim # Proof of authorize k sign claim (which contains the public key in compressed form)
+   }
 
-    JWS_HEADER = {
-      typ: iden3.sig.v0_1
-      iss: str # Ethereum Address
-      iat: uint # issued at time, unix timestamp
-      exp: uint # expiration time, unix timestamp
-      alg: ? # algorithm
-    }
+   JWS_HEADER = {
+     typ: iden3.sig.v0_1
+     iss: str # Ethereum Address
+     iat: uint # issued at time, unix timestamp
+     exp: uint # expiration time, unix timestamp
+     alg: ? # algorithm
+   }
 
-    JWS_SIGN(JWS_HEADER, JWS_PAYLOAD)
+   JWS_SIGN(JWS_HEADER, JWS_PAYLOAD)
 
 Each Signature request ``type`` has a view representation for the user,
 where the ``data`` and ``form`` are presented. Some of the values may be
@@ -110,7 +108,7 @@ the ability to pick some elements of the ``form``.
 key.
 
 As ``JWS_HEADER.alg`` we will use a custom algorithm (not defined in the
-JWS standard): "EK256K1", which is ECDSA with secp256k1 curve and keccak
+JWS standard): “EK256K1”, which is ECDSA with secp256k1 curve and keccak
 as hash function, the same signature algorithm configuration used in
 Ethereum.
 
@@ -119,19 +117,19 @@ Auxiliary data structures
 
 ::
 
-    proofClaim: {
-        signature: signature # Relay root + date signed by relay
-        date: uint
-        leaf: claim
-        proofs: proofClaimPartial[]
-    }
+   proofClaim: {
+       signature: signature # Relay root + date signed by relay
+       date: uint
+       leaf: claim
+       proofs: proofClaimPartial[]
+   }
 
-    proofClaimPartial: {
-        mtp0: mtp # merkle tree proof of leaf existence
-        mtp1: mtp # merkle tree proof of leaf non-existence
-        root: key # merkle tree root
-        aux: nil | { ver: uint, era: uint, idAddr: str } # Necessary data to construct SetRootClaim from root
-    }
+   proofClaimPartial: {
+       mtp0: mtp # merkle tree proof of leaf existence
+       mtp1: mtp # merkle tree proof of leaf non-existence
+       root: key # merkle tree root
+       aux: nil | { ver: uint, era: uint, idAddr: str } # Necessary data to construct SetRootClaim from root
+   }
 
 Usually the relay returns the ``proofClaim`` data structure to prove
 that a claim is valid and is in the merkle tree.
@@ -143,16 +141,16 @@ payload:
 
 ::
 
-    type: iden3.iden_assert.v0_1
-    data: {
-      challenge: nonce # 256 bits in base64
-      timeout: uint # seconds
-      origin: str # domain
-    }
-    form: {
-      ethName: str # ethereumName
-      proofAssignName: proofClaim # proof of claim Assign Name for ethName
-    }
+   type: iden3.iden_assert.v0_1
+   data: {
+     challenge: nonce # 256 bits in base64
+     timeout: uint # seconds
+     origin: str # domain
+   }
+   form: {
+     ethName: str # ethereumName
+     proofAssignName: proofClaim # proof of claim Assign Name for ethName
+   }
 
 A session id, if necessary, can be computed from the challenge. This
 session id can be used to link the communication between the web service
@@ -162,13 +160,13 @@ view:
 
 ::
 
-    type: Identity Assertion
-    data: {
-      origin: str # domain
-    }
-    form: {
-      ethName: str # ethereum name
-    }
+   type: Identity Assertion
+   data: {
+     origin: str # domain
+   }
+   form: {
+     ethName: str # ethereum name
+   }
 
 Algorithms
 ----------
@@ -184,14 +182,14 @@ Signature verification algorithm
 
 ::
 
-    VerifySignedPacket(jwsHeader, jwsPayload, signature, relayPk):
-    1. Verify jwsHeader.typ is 'iden3.sig.v0_1'
-    2. Verify jwsHeader.alg is 'EK256K1'
-    3. Verify that jwsHeader.iat <= now() < jwsHeader.exp 
-    4. Verify that jwsPayload.ksign is in jwsPayload.proofKSign.leaf
-    5. Verify that jwsHeader.iss is in jwsPayload.proofKSign
-    6. Verify that signature of JWS(jwsHeader, jwsPayload) by jwsPayload.ksign is signature
-    7. VerifyProofOfClaim(jwsPayload.proofKSign, relayPk)
+   VerifySignedPacket(jwsHeader, jwsPayload, signature, relayPk):
+   1. Verify jwsHeader.typ is 'iden3.sig.v0_1'
+   2. Verify jwsHeader.alg is 'EK256K1'
+   3. Verify that jwsHeader.iat <= now() < jwsHeader.exp 
+   4. Verify that jwsPayload.ksign is in jwsPayload.proofKSign.leaf
+   5. Verify that jwsHeader.iss is in jwsPayload.proofKSign
+   6. Verify that signature of JWS(jwsHeader, jwsPayload) by jwsPayload.ksign is signature
+   7. VerifyProofOfClaim(jwsPayload.proofKSign, relayPk)
 
 In 4. we verify that the ksign used to sign the packet is authorized by
 the user, identified by jwsHeader.iss ethereum address.
@@ -201,33 +199,37 @@ Iden Assert verification algorithm
 
 ::
 
-    VerifyIdenAssertV01(nonceDB, origin, jwsHeader, jwsPayload, signature, relayPk):
-    1. Verify jwsPayload.type is 'iden3.iden_assert.v0_1'
-    2. Verify jwsPayload.data.origin is origin
-    3. Verify jwsPayload.data.challenge is in nonceDB and hasn't expired, delete it
-    4. Verify that jwsHeader.iss and jwsPayload.form.ethName are in jwsPayload.proofAssignName.leaf
-    5. VerifyProofOfClaim(jwsPayload.form.ethName, relayPk)
+   VerifyIdenAssertV01(nonceDB, origin, jwsHeader, jwsPayload, signature, relayPk):
+   1. Verify jwsPayload.type is 'iden3.iden_assert.v0_1'
+   2. Verify jwsPayload.data.origin is origin
+   3. Verify jwsPayload.data.challenge is in nonceDB and hasn't expired, delete it
+   4. Verify that jwsHeader.iss and jwsPayload.form.ethName are in jwsPayload.proofAssignName.leaf
+   5. VerifyProofOfClaim(jwsPayload.form.ethName, relayPk)
 
 ProofOfClaim verification
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-    VerifyProofOfClaim(p, relayPk):
-    1. Verify signature of p.proofs[-1].root by relayPk is p.signature
-       let leaf = p.leaf
-    2. loop for each proof in p.proofs:
-        2.1 Verify proof.mtp0 is existence proof
-        2.2 Verify proof.mtp0 with leaf and proof.root
-        2.3 Verify proof.mtp1 is non-existence proof
-        2.4 Verify proof.mtp1 with ClaimIncrementVersion(leaf) and proof.root
-            leaf = NewClaimSetRootClaim(p.root, p.aux.ver, p.aux.era, p.aux.ethAddr)
+   VerifyProofOfClaim(p, relayPk):
+   1. Verify signature of p.proofs[-1].root by relayPk is p.signature
+      let leaf = p.leaf
+   2. loop for each proof in p.proofs:
+       2.1 Verify proof.mtp0 is existence proof
+       2.2 Verify proof.mtp0 with leaf and proof.root
+       2.3 Verify proof.mtp1 is non-existence proof
+       2.4 Verify proof.mtp1 with ClaimIncrementVersion(leaf) and proof.root
+           leaf = NewClaimSetRootClaim(p.root, p.aux.ver, p.aux.era, p.aux.ethAddr)
 
 Rationale
 ---------
 
 See `this document <login_spec_rationale.md>`__ for the rationale of
 some decisions made in the design of this protocol.
+
+.. |image0| image:: login_overview.png
+.. |image1| image:: login_flow.png
+
 
 iden3js - protocols
 ===================
@@ -237,31 +239,31 @@ Login (Identity Assertion)
 
 ::
 
-    Wallet                                   Service
-      +                                         +
-      |           signatureRequest              |
-      | <-------------------------------------+ |
-      |                                         |
-      | +---+                                   |
-      |     |                                   |
-      |     |sign packet                        |
-      |     |                                   |
-      | <---+                                   |
-      |              signedPacket               |
-      | +-------------------------------------> |
-      |                                         |
-      |                                  +---+  |
-      |                      verify      |      |
-      |                      signedPacket|      |
-      |                                  |      |
-      |                                  +--->  |
-      |                                         |
-      |                 ok                      |
-      | <-------------------------------------+ |
-      |                                         |
-      |                                         |
-      |                                         |
-      +                                         +
+   Wallet                                   Service
+     +                                         +
+     |           signatureRequest              |
+     | <-------------------------------------+ |
+     |                                         |
+     | +---+                                   |
+     |     |                                   |
+     |     |sign packet                        |
+     |     |                                   |
+     | <---+                                   |
+     |              signedPacket               |
+     | +-------------------------------------> |
+     |                                         |
+     |                                  +---+  |
+     |                      verify      |      |
+     |                      signedPacket|      |
+     |                                  |      |
+     |                                  +--->  |
+     |                                         |
+     |                 ok                      |
+     | <-------------------------------------+ |
+     |                                         |
+     |                                         |
+     |                                         |
+     +                                         +
 
 Read the login protocol specification `here <login_spec.md>`__.
 
@@ -270,7 +272,7 @@ Define new NonceDB
 
 .. code:: js
 
-    const nonceDB = new iden3.protocols.NonceDB();
+   const nonceDB = new iden3.protocols.NonceDB();
 
 Generate New Request of Identity Assert
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -286,24 +288,24 @@ Generate New Request of Identity Assert
 
    -  ``signatureRequest``: ``Object``
 
-      .. code:: js
+   .. code:: js
 
-          const signatureRequest = iden3.protocols.login.newRequestIdenAssert(nonceDB, origin, 2*60);
+      const signatureRequest = iden3.protocols.login.newRequestIdenAssert(nonceDB, origin, 2*60);
 
 The ``nonce`` of the ``signatureRequest`` can be getted from:
 
 .. code:: js
 
-    const nonce = signatureRequest.body.data.challenge;
-    // nonce is the string containing the nonce value
+   const nonce = signatureRequest.body.data.challenge;
+   // nonce is the string containing the nonce value
 
 We can add auxiliar data to the ``nonce`` in the ``nonceDB`` only one
 time:
 
 .. code:: js
 
-    const added = nodeDB.addAuxToNonce(nonce, auxdata);
-    // added is a bool confirming if the aux data had been added
+   const added = nodeDB.addAuxToNonce(nonce, auxdata);
+   // added is a bool confirming if the aux data had been added
 
 Sign Packet
 ~~~~~~~~~~~
@@ -325,10 +327,10 @@ Sign Packet
 
    -  ``signedPacket``: ``String``
 
-      .. code:: js
+   .. code:: js
 
-          const expirationTime = unixtime + (3600 * 60);
-          const signedPacket = iden3.protocols.login.signIdenAssertV01(signatureRequest, usrAddr, ethName, proofOfEthName, kc, ksign, proofOfKSign, expirationTime);
+      const expirationTime = unixtime + (3600 * 60);
+      const signedPacket = iden3.protocols.login.signIdenAssertV01(signatureRequest, usrAddr, ethName, proofOfEthName, kc, ksign, proofOfKSign, expirationTime);
 
 Verify Signed Packet
 ~~~~~~~~~~~~~~~~~~~~
@@ -346,9 +348,9 @@ Verify Signed Packet
       deleted from the nonceDB when the signedPacket is verified. If the
       verification fails, the nonce will be ``undefined``
 
-      .. code:: js
+   .. code:: js
 
-          const verified = iden3.protocols.login.verifySignedPacket(nonceDB, origin, signedPacket);
+      const verified = iden3.protocols.login.verifySignedPacket(nonceDB, origin, signedPacket);
 
 Apendix
 ~~~~~~~
@@ -374,7 +376,7 @@ https://medium.facilelogin.com/json-message-signing-alternatives-897f90d411c
 
 -  JSON Web Signature (JWS)
 
-   -  Doesn't need canonicalization
+   -  Doesn’t need canonicalization
    -  Allows signing arbitrary data (not only JSON)
    -  Widely used
 
@@ -397,14 +399,14 @@ References
 ----------
 
 -  https://en.wikipedia.org/wiki/OpenID
--  https://en.wikipedia.org/wiki/OpenID\_Connect
+-  https://en.wikipedia.org/wiki/OpenID_Connect
 -  https://en.wikipedia.org/wiki/IndieAuth
 -  https://fidoalliance.org/how-fido-works/
 
 WebAuth API
 ~~~~~~~~~~~
 
--  https://developer.mozilla.org/en-US/docs/Web/API/Web\_Authentication\_API
+-  https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
 -  https://w3c.github.io/webauthn/
 -  https://www.w3.org/TR/webauthn/
 
@@ -415,8 +417,8 @@ https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-2
 - FIDO Threat analysis and mitigations: -
 https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#threat-analysis
 
-Currently (2018-01-08) there's no support for iOS (Safari): -
-https://developer.mozilla.org/en-US/docs/Web/API/Web\_Authentication\_API#Browser\_compatibility
+Currently (2018-01-08) there’s no support for iOS (Safari): -
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API#Browser_compatibility
 
 Criticism: - https://www.scip.ch/en/?labs.20180424
 
@@ -433,16 +435,16 @@ The FIDO protocols security goals:
 [SG-1]
 ^^^^^^
 
-Strong User Authentication: Authenticate (i.e. recognize) a user and/or
+Strong User Authentication: Authenticate (i.e. recognize) a user and/or
 a device to a relying party with high (cryptographic) strength. ####
 [SG-2] Credential Guessing Resilience: Provide robust protection against
-eavesdroppers, e.g. be resilient to physical observation, resilient to
+eavesdroppers, e.g. be resilient to physical observation, resilient to
 targeted impersonation, resilient to throttled and unthrottled guessing.
 #### [SG-3] Credential Disclosure Resilience: Be resilient to phishing
 attacks and real-time phishing attack, including resilience to online
 attacks by adversaries able to actively manipulate network traffic. ####
 [SG-4] Unlinkablity: Protect the protocol conversation such that any two
-relying parties cannot link the conversation to one user (i.e. be
+relying parties cannot link the conversation to one user (i.e. be
 unlinkable). #### [SG-5] Verifier Leak Resilience: Be resilient to leaks
 from other relying parties. I.e., nothing that a verifier could possibly
 leak can help an attacker impersonate the user to another relying party.

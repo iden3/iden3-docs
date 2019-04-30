@@ -4,8 +4,8 @@ Overview
 
 .. contents::    :depth: 3
 
-discovery-node |Go Report Card| |GoDoc|
-=======================================
+discovery-node `Go Report Card <https://goreportcard.com/report/github.com/iden3/discovery-node>`__ `GoDoc <https://godoc.org/github.com/iden3/discovery-node>`__
+=================================================================================================================================================================
 
 Draft implementation of ``discovery-node`` of the decentralized
 discovery protocol over Pss Swarm
@@ -28,7 +28,7 @@ each identity trusts its active discovery-node
 Node Storage
 ^^^^^^^^^^^^
 
-The ``discovery-node`` data storage is a leveldb database. It's
+The ``discovery-node`` data storage is a leveldb database. It’s
 organized with prefixes, where each type of data is stored under a
 prefix.
 
@@ -36,7 +36,7 @@ Databases: - ``dbOwnIds``: holds the data about the identities that the
 ``discovery-node`` manages - ``dbAnswCache``: holds the data about the
 discovered identites. Each data packet of a discovered identity, has a
 ``timestamp``, the data packets are valid under a time window where the
-``timestamp`` allows to determine if it's already valed or is too old
+``timestamp`` allows to determine if it’s already valed or is too old
 
 Sample discovery flow
 ^^^^^^^^^^^^^^^^^^^^^
@@ -76,7 +76,7 @@ Discovery flow:
    network under the topic ``id_discovery``
 
    -  the ``Requester`` waits a configured amount of time, if the
-      ``Answer`` don't comes inside that time window, returns an error
+      ``Answer`` don’t comes inside that time window, returns an error
       msg through https to the ``user``
 
 5. the ``Id_Agent`` server of that identity will receive the ``Query``
@@ -91,20 +91,20 @@ Discovery flow:
 
 ::
 
-    Requester                       Id_Agent
-       +                            +
-       |                            |
-       * 1                          |
-       * 2                          |
-       * 3                          |
-       |             4              |
-       +--------------------------->+
-       |                            * 5
-       |             6              |
-       +<---------------------------+
-       * 7                          |
-       |                            |
-       +                            +
+   Requester                       Id_Agent
+      +                            +
+      |                            |
+      * 1                          |
+      * 2                          |
+      * 3                          |
+      |             4              |
+      +--------------------------->+
+      |                            * 5
+      |             6              |
+      +<---------------------------+
+      * 7                          |
+      |                            |
+      +                            +
 
 Data structures
 ^^^^^^^^^^^^^^^
@@ -114,41 +114,41 @@ Each data packet that is sent over the network, goes with a
 
 .. code:: go
 
-    // Service holds the data about a node service (can be a Relay, a NameServer, a DiscoveryNode, etc)
-    type Service struct {
-        IdAddr       common.Address
-        KademliaAddr []byte // Kademlia address
-        PssPubK      PubK   // Public Key of the pss node, to receive encrypted data packets
-        Url          string
-        Type         string // TODO define type specification (relay, nameserver, etc)
-        Mode         string // Active or Passive(gateway) (this only affects to discovery-node's type)
-        ProofService []byte // TODO ProofClaimService data type (to be defined)
-    }
+   // Service holds the data about a node service (can be a Relay, a NameServer, a DiscoveryNode, etc)
+   type Service struct {
+       IdAddr       common.Address
+       KademliaAddr []byte // Kademlia address
+       PssPubK      PubK   // Public Key of the pss node, to receive encrypted data packets
+       Url          string
+       Type         string // TODO define type specification (relay, nameserver, etc)
+       Mode         string // Active or Passive(gateway) (this only affects to discovery-node's type)
+       ProofService []byte // TODO ProofClaimService data type (to be defined)
+   }
 
-    // Query is the data packet that a node sends to discover data about one identity
-    type Query struct {
-        Version          string         // version of the protocol
-        MsgId            string         // random msg id, to identify and relate Query and Answer
-        AboutId          common.Address // About Who is requesting data (about which identity address)
-        RequesterId      common.Address
-        RequesterKAddr   []byte // Kademlia address
-        RequesterPssPubK PubK   // Public Key of the pss node requester, to receive encrypted data packets
-        InfoFrom         []byte // TODO to be defined
-        Timestamp        int64
-        Nonce            uint64 // for the PoW
-    }
+   // Query is the data packet that a node sends to discover data about one identity
+   type Query struct {
+       Version          string         // version of the protocol
+       MsgId            string         // random msg id, to identify and relate Query and Answer
+       AboutId          common.Address // About Who is requesting data (about which identity address)
+       RequesterId      common.Address
+       RequesterKAddr   []byte // Kademlia address
+       RequesterPssPubK PubK   // Public Key of the pss node requester, to receive encrypted data packets
+       InfoFrom         []byte // TODO to be defined
+       Timestamp        int64
+       Nonce            uint64 // for the PoW
+   }
 
-    // Answer is the data packet that a node sends when answering to a Query data packet
-    type Answer struct {
-        Version   string // version of the protocol
-        MsgId     string // random msg id, to identify and relate Query and Answer
-        AboutId   common.Address
-        FromId    common.Address
-        AgentId   Service
-        Services  []Service
-        Timestamp int64
-        Signature []byte
-    }
+   // Answer is the data packet that a node sends when answering to a Query data packet
+   type Answer struct {
+       Version   string // version of the protocol
+       MsgId     string // random msg id, to identify and relate Query and Answer
+       AboutId   common.Address
+       FromId    common.Address
+       AgentId   Service
+       Services  []Service
+       Timestamp int64
+       Signature []byte
+   }
 
 Run
 ~~~
@@ -158,14 +158,14 @@ Run one node
 
 ::
 
-    go run *.go --config config0.yaml start
+   go run *.go --config config0.yaml start
 
 Run 3 nodes and test endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
-    bash run-tmux-demo.sh
+   bash run-tmux-demo.sh
 
 Test
 ~~~~
@@ -174,9 +174,4 @@ Unit tests:
 
 ::
 
-    go test ./...
-
-.. |Go Report Card| image:: https://goreportcard.com/badge/github.com/iden3/discovery-node
-   :target: https://goreportcard.com/report/github.com/iden3/discovery-node
-.. |GoDoc| image:: https://godoc.org/github.com/iden3/discovery-node?status.svg
-   :target: https://godoc.org/github.com/iden3/discovery-node
+   go test ./...

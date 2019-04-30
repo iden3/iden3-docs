@@ -18,7 +18,7 @@ off-chain and on-chain on Ethereum.
 1.1 Pre-requisites
 ~~~~~~~~~~~~~~~~~~
 
-If you don't have it installed yet, you need to install ``Node.js`` in
+If you don’t have it installed yet, you need to install ``Node.js`` in
 your laptop.
 
 Last stable version of ``Node.js`` (Or 8.12.0) works just fine. But if
@@ -35,13 +35,13 @@ Just run:
 
 .. code:: sh
 
-    npm install -g circom
-    npm install -g snarkjs
+   npm install -g circom
+   npm install -g snarkjs
 
 2. Working with a circuit
 -------------------------
 
-Let's create a circuit that tries to prove that you are able to factor a
+Let’s create a circuit that tries to prove that you are able to factor a
 number!
 
 2.1 Create a circuit in a new directory
@@ -50,30 +50,32 @@ number!
 1. Create an empty directory called ``factor`` where you will put all
    the files that you will use in this tutorial.
 
-   ::
+::
 
-       mkdir factor
-       cd factor
+   mkdir factor
+   cd factor
 
-    In a real circuit, you will probably want to create a ``git``
-    repository with a ``circuits`` directory and a ``test`` directory
-    with all your tests, and the needed scripts to build all the
-    circuits.
+..
+
+   In a real circuit, you will probably want to create a ``git``
+   repository with a ``circuits`` directory and a ``test`` directory
+   with all your tests, and the needed scripts to build all the
+   circuits.
 
 2. Create a new file named ``circuit.circom`` with the following
    content:
 
 ::
 
-    template Multiplier() {
-        signal private input a;
-        signal private input b;
-        signal output c;
-        
-        c <== a*b;
-    }
+   template Multiplier() {
+       signal private input a;
+       signal private input b;
+       signal output c;
+       
+       c <== a*b;
+   }
 
-    component main = Multiplier();
+   component main = Multiplier();
 
 This circuit has 2 private input signals named ``a`` and ``b`` and one
 output named ``c``.
@@ -94,7 +96,7 @@ We are now ready to compile the circuit. Run the following command:
 
 .. code:: sh
 
-    circom circuit.circom -o circuit.json
+   circom circuit.circom -o circuit.json
 
 to compile the circuit to a file named ``circuit.json``
 
@@ -107,7 +109,7 @@ typing:
 
 .. code:: sh
 
-    snarkjs --help 
+   snarkjs --help 
 
 3.1 View information and stats regarding a circuit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -116,26 +118,28 @@ To show general statistics of this circuit, you can run:
 
 .. code:: sh
 
-    snarkjs info -c circuit.json
+   snarkjs info -c circuit.json
 
 You can also print the constraints of the circuit by running:
 
 .. code:: sh
 
-    snarkjs printconstraints -c circuit.json
+   snarkjs printconstraints -c circuit.json
 
 3.2 Setting up using *snarkjs*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ok, let's run a setup for our circuit:
+Ok, let’s run a setup for our circuit:
 
 .. code:: sh
 
-    snarkjs setup 
+   snarkjs setup 
 
-    By default ``snarkjs`` will look for and use ``circuit.json``. You
-    can always specify a different circuit file by adding
-    ``-c <circuit JSON file name>``
+..
+
+   By default ``snarkjs`` will look for and use ``circuit.json``. You
+   can always specify a different circuit file by adding
+   ``-c <circuit JSON file name>``
 
 The output of the setup will in the form of 2 files:
 ``proving_key.json`` and ``verification_key.json``
@@ -159,22 +163,22 @@ For example, Imagine that you want to prove that you are able to factor
 33 that means that you know two numbers ``a`` and ``b`` that when you
 multiply them, it results in 33.
 
-    Of course you can always use one and the same number as ``a`` and
-    ``b``. We will deal with this problem later.
+   Of course you can always use one and the same number as ``a`` and
+   ``b``. We will deal with this problem later.
 
 So you want to prove that you know 3 and 11.
 
-Let's create a file named ``input.json``
+Let’s create a file named ``input.json``
 
 .. code:: json
 
-    {"a": 3, "b": 11}
+   {"a": 3, "b": 11}
 
-And now let's calculate the witness:
+And now let’s calculate the witness:
 
 .. code:: sh
 
-    snarkjs calculatewitness
+   snarkjs calculatewitness
 
 You may want to take a look at ``witness.json`` file with all the
 signals.
@@ -186,7 +190,7 @@ Now that we have the witness generated, we can create the proof.
 
 .. code:: sh
 
-    snarkjs proof
+   snarkjs proof
 
 This command will use the ``prooving_key.json`` and the ``witness.json``
 files by default to generate ``proof.json`` and ``public.json``
@@ -202,7 +206,7 @@ To verify the proof run:
 
 .. code:: sh
 
-    snarkjs verify
+   snarkjs verify
 
 This command will use ``verification_key.json``, ``proof.json`` and
 ``public.json`` to verify that is valid.
@@ -218,7 +222,7 @@ Generate the solidity verifier
 
 .. code:: sh
 
-    snarkjs generateverifier
+   snarkjs generateverifier
 
 This command will take the ``verification_key.json`` and generate a
 solidity code in ``verifier.sol`` file.
@@ -228,9 +232,9 @@ You can take the code in ``verifier.sol`` and cut and paste in remix.
 This code contains two contracts: Pairings and Verifier. You just need
 to deploy the ``Verifier`` contract.
 
-    You may want to use a test net like Rinkeby, Kovan or Ropsten. You
-    can also use the Javascript VM, but in some browsers, the
-    verification takes long and it may hang the page.
+   You may want to use a test net like Rinkeby, Kovan or Ropsten. You
+   can also use the Javascript VM, but in some browsers, the
+   verification takes long and it may hang the page.
 
 Verifying the proof on-chain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,7 +249,7 @@ of the call by typing:
 
 .. code:: sh
 
-    snarkjs generatecall
+   snarkjs generatecall
 
 Just cut and paste the output to the parameters field of the
 ``verifyProof`` method in Remix.
@@ -269,38 +273,38 @@ is one.
 
 We just calculate inv by ``1/(a-1)``
 
-So let's modify the circuit:
+So let’s modify the circuit:
 
 ::
 
-    template Multiplier() {
-        signal private input a;
-        signal private input b;
-        signal output c;
-        signal inva;
-        signal invb;
-        
-        inva <-- 1/(a-1);
-        (a-1)*inva === 1;
-        
-        invb <-- 1/(b-1);
-        (b-1)*invb === 1;    
-        
-        c <== a*b;
-    }
+   template Multiplier() {
+       signal private input a;
+       signal private input b;
+       signal output c;
+       signal inva;
+       signal invb;
+       
+       inva <-- 1/(a-1);
+       (a-1)*inva === 1;
+       
+       invb <-- 1/(b-1);
+       (b-1)*invb === 1;    
+       
+       c <== a*b;
+   }
 
-    component main = Multiplier();
+   component main = Multiplier();
 
 A nice thing of circom language is that you can split a <== into two
-independent acions: <-- and ===
+independent acions: <– and ===
 
-The <-- and --> operators Just assign a value to a signal without
-creating any constraints.
+The <– and –> operators Just assign a value to a signal without creating
+any constraints.
 
 The === operator just adds a constraint without assigning any value to
 any signal.
 
-The circuit has also another problem and it's that the operation works
+The circuit has also another problem and it’s that the operation works
 in Zr, so we need to guarantee too that the multiplication does not
 overflow. This can be done by binarizing the inputs and checking the
 ranges, but we will reserve it for future tutorials.

@@ -2,7 +2,7 @@
 
 
 ##############################################
-Centralized Login
+Centralized Login Use Case
 ##############################################
 
 .. topic:: Overview

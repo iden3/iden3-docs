@@ -85,13 +85,10 @@ Miscellaneous utilities.
 
    * - Repo
      - Description
-   * - citrus_ 
-     - Continuous integration testing for iden3 system
    * - wasmbuilder_ 
      - Javascript library to simplify writing Web Assembly code
 
 
-.. _citrus: https://github.com/iden3/citrus
 .. _wasmbuilder: https://github.com/iden3/wasmbuilder
 
 
@@ -100,5 +97,4 @@ Miscellaneous utilities.
    :hidden:
    :caption: Misc:
 
-   iden3_repos/citrus
    iden3_repos/wasmbuilder

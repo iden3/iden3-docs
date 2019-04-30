@@ -6,6 +6,26 @@ Baby Jubjub
 
 1.2
 
+.. raw:: latex
+
+   \maketitle 
+
+.. raw:: latex
+
+   \vspace{1.5cm}
+
+.. raw:: latex
+
+   \tableofcontents
+
+.. raw:: latex
+
+   \vspace{0.5cm}
+
+.. raw:: latex
+
+   \newpage
+
 Scope
 =====
 
@@ -27,9 +47,8 @@ Background
 
 With this purpose, we used a deterministic algorithm for finding
 elliptic curves over a specified finite field (Langley, Hamburg, and
-Turner 2016) together with the restrictions of security parameters
-described in SafeCurves project (Bernstein and Lange Accessed February
-25, 2018).
+Turner, n.d.) together with the restrictions of security parameters
+described in SafeCurves project (Bernstein and Lange, n.d.).
 
 Terminology And Description
 ===========================
@@ -39,18 +58,18 @@ Generation Of Baby Jubjub
 
 | In 2016, a group of researchers of IRPF designed a deterministic
   algorithm that, given a prime number :math:`p`, it returns the
-  elliptic curve defined over :math:`{\ensuremath{\mathbb{F}_p}}` with
+  elliptic curve defined over :math:`\ensuremath{\mathbb{F}_p}` with
   smallest coefficient :math:`A` such that :math:`A-2` is a multiple of
   4 and equation :math:`y^2 = x^3 + Ax^2 + x` describes a Montgomery
   curve. The assumption :math:`A-2` divisible by 4 comes from the fact
   that as this value is used in many operations, so trying to keep it
   smaller and divisible by four is a reasonable assumption (Langley,
-  Hamburg, and Turner 2016).
+  Hamburg, and Turner, n.d.).
 | SafeCurves is a project that checks some of the most common and known
   attacks on several elliptic curves. It also provides the algorithm it
-  was used (Bernstein and Lange Accessed February 25, 2018).
+  was used (Bernstein and Lange, n.d.).
 | We considered the large prime number dividing the order of BN128 and
-  run algorithm A.1 from (Langley, Hamburg, and Turner 2016). The first
+  run algorithm A.1 from (Langley, Hamburg, and Turner, n.d.). The first
   elliptic curve it was returned satisfying SafeCurves criteria was the
   Montgomery curve with coefficient :math:`A = 168698`. We named this
   curve Baby Jubjub elliptic curve.
@@ -65,14 +84,14 @@ From now on, let
    p = 21888242871839275222246405745257275088548364
                    400416034343698204186575808495617
 
- and :math:`{\ensuremath{\mathbb{F}_p}}` the finite field with :math:`p`
+ and :math:`\ensuremath{\mathbb{F}_p}` the finite field with :math:`p`
 elements.
 
 Montgomery Form
 ~~~~~~~~~~~~~~~
 
-We define :math:`E_M` as the *Baby-Jubjub* Montgomery elliptic curve
-defined over :math:`{\ensuremath{\mathbb{F}_p}}` given by equation
+We define :math:`E_M` as the Baby-Jubjub Montgomery elliptic curve
+defined over :math:`\ensuremath{\mathbb{F}_p}` given by equation
 
 .. math:: E: v^2 = u^3 +  168698u^2 + u.
 
@@ -83,10 +102,10 @@ defined over :math:`{\ensuremath{\mathbb{F}_p}}` given by equation
    r = 2736030358979909402780800718157159386076813972
            158567259200215660948447373041
 
- is a prime number. Denote by :math:`{\ensuremath{\mathbb{G}}}` the
+ is a prime number. Denote by :math:`\ensuremath{\mathbb{G}}` the
 subgroup of points of order :math:`r`, that is,
 
-.. math:: {\ensuremath{\mathbb{G}}}= \Set{ P \in E({\ensuremath{\mathbb{F}_p}}) | r P = O  }.
+.. math:: \ensuremath{\mathbb{G}}= \Set{ P \in E(\ensuremath{\mathbb{F}_p}) | r P = O  }.
 
 Edwards Form
 ~~~~~~~~~~~~
@@ -96,8 +115,8 @@ Edwards Form
   .. math:: E: x^2 + y^2 = 1 +  d x^2 y^2
 
    where
-  :math:` d = 9706598848417545097372247223557719406784115219466060233080913168975159366771.`
-| The birational equivalence (Bernstein et al. 2008 Thm. 3.2) from
+  :math:`d = 9706598848417545097372247223557719406784115219466060233080913168975159366771.`
+| The birational equivalence (Bernstein et al., n.d. Thm. 3.2) from
   :math:`E` to :math:`E_M` is the map
 
   .. math:: (x,y) \to (u,v) = \left( \frac{1 + y}{1 - y} , \frac{1 + y}{(1 - y)x} \right)
@@ -111,7 +130,7 @@ Arithmetic In Baby Jubjub
 
 In this section we define how to operate in the elliptic curve group:
 the addition of points and multiplication of a point by a scalar (an
-element of :math:`{\ensuremath{\mathbb{F}_p}}`).
+element of :math:`\ensuremath{\mathbb{F}_p}`).
 
 Addition Of Points
 ~~~~~~~~~~~~~~~~~~
@@ -121,14 +140,14 @@ careful if the points being added are equal (doubling) or not (adding)
 and if one of the points is the point at infinity (Okeya, Kurumatani,
 and Sakurai 2000). Edwards curves have the advantage that there is no
 such case distinction and doubling can be performed with exactly the
-same formula as addition (Bernstein et al. 2008). In comparison,
+same formula as addition (Bernstein et al., n.d.). In comparison,
 operating in Montgomery curves is cheaper. In this section, we summarize
 how addition and doubling is performed in both forms. For the exact
 number of operations required in different forms of elliptic curves, see
-(Bernstein et al. 2008).
+(Bernstein et al., n.d.).
 
--  : Let :math:`{P_{1} = (x_{1}, y_{1})}` and
-   :math:`{P_{2} = (x_{2}, y_{2})}` be points of the Baby-Jubjub twisted
+-  : Let :math:`P_{1} = (x_{1}, y_{1})` and
+   :math:`P_{2} = (x_{2}, y_{2})` be points of the Baby-Jubjub twisted
    Edwards elliptic curve :math:`E`. The sum :math:`P_1 + P_2` is a
    third point :math:`P_3 = (x_3, y_3)` with
 
@@ -143,9 +162,9 @@ number of operations required in different forms of elliptic curves, see
     Note that the neutral element is the point :math:`O = (0,1)` and the
    inverse of a point :math:`(x,y)` is :math:`(-x,y)`.
 
--  : Let :math:`{P_{1} = (x_{1}, y_{1})}\not=O` and
-   :math:`{P_{2} = (x_{2}, y_{2})}\not=O` be two points of the
-   Baby-JubJub elliptic curve :math:`E_M` in Montgomery form.
+-  : Let :math:`P_{1} = (x_{1}, y_{1})\not=O` and
+   :math:`P_{2} = (x_{2}, y_{2})\not=O` be two points of the Baby-JubJub
+   elliptic curve :math:`E_M` in Montgomery form.
 
    If :math:`P_1\not=P_2`, then the sum :math:`P_1 + P_2` is a third
    point :math:`P_3 = (x_3, y_3)` with coordinates
@@ -179,9 +198,9 @@ Multiplication Of A Point Of :math:`E` By A Scalar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let :math:`P\not= O` be a point of the Edwards curve :math:`E` of order
-strictly greater than 8 (i.e. :math:`P\in{\ensuremath{\mathbb{G}}}`) and
+strictly greater than 8 (i.e. :math:`P\in\ensuremath{\mathbb{G}}`) and
 let :math:`k` a binary number representing an element of
-:math:`{\ensuremath{\mathbb{F}_p}}`. We describe the circuit used to
+:math:`\ensuremath{\mathbb{F}_p}`. We describe the circuit used to
 compute the point :math:`k\cdot P`.
 
 #. First, we divide :math:`k` into chunks of 248 bits. If :math:`k` is
@@ -209,6 +228,10 @@ compute the point :math:`k\cdot P`.
    are calculated separately inside the seq boxes and then added
    together.
 
+   .. raw:: latex
+
+      \centering
+
    |image|
 
 #. Each seq box takes a point of :math:`E` of the from
@@ -222,10 +245,14 @@ compute the point :math:`k\cdot P`.
       			\sum_{n = 0}^{247} b_n \cdot 2^{n} \cdot P_i.
 
     The first point is the input of the next :math:`(i+1)`-th seq box
-   (note that :math:` 2^{248} \cdot P_i = P_{i+1}`) whereas the second
+   (note that :math:`2^{248} \cdot P_i = P_{i+1}`) whereas the second
    output is the computation of the :math:`i`-th term in expression
-   ([kP]). The precise circuit is depicted in next two figures seq and
-   window.
+   (`[kP] <#kP>`__). The precise circuit is depicted in next two figures
+   seq and window.
+
+   .. raw:: latex
+
+      \centering
 
    | |image|
 
@@ -260,7 +287,7 @@ compute the point :math:`k\cdot P`.
       because for any integer :math:`m`, :math:`2^m` is never a multiple
       of :math:`r`, even when :math:`2^m` is larger than :math:`r`, as
       :math:`r` is a prime number. Hence, :math:`2^m \cdot P \not= O`
-      for any :math:`m\in{\ensuremath{\mathbb{Z}}}`.
+      for any :math:`m\in\ensuremath{\mathbb{Z}}`.
 
    -  Looking closely at the two inputs of the sum, it is easy to
       realize that they have different parity, one is an even multiple
@@ -268,13 +295,17 @@ compute the point :math:`k\cdot P`.
       they must be different points. Hence, the sum in :math:`E_M` is
       done correctly.
 
-#. The last term of expression ([kP]) is computed in a very similar
-   manner. The difference is that the number of bits composing
+#. The last term of expression (`[kP] <#kP>`__) is computed in a very
+   similar manner. The difference is that the number of bits composing
    :math:`k_j` may be shorter and that there is no need to compute
    :math:`P_{j+1}`, as there is no other seq box after this one. So,
    there is only output, the point
    :math:`k_j \cdot P_j = k_j\cdot 2^{248j} P`. This circuit is named
    seq’.
+
+   .. raw:: latex
+
+      \centering
 
    |image|
 
@@ -282,7 +313,7 @@ Challenges And Security
 =======================
 
 As required in the construction of Baby-Jubjub, the curve satisfies
-SafeCurves criteria. This can be checked following (Hat 2018).
+SafeCurves criteria. This can be checked following (Hat, n.d.).
 
 Implementation
 ==============
@@ -302,6 +333,14 @@ Intellectual Property
 We will release the final version of this proposal under creative
 commons, to ensure it is freely available to everyone.
 
+.. raw:: latex
+
+   \addcontentsline{toc}{section}{References}
+
+.. raw:: latex
+
+   \bibliographystyle{acm}
+
 .. raw:: html
 
    <div id="refs" class="references">
@@ -320,10 +359,11 @@ McGraw-Hill Book Company.
 
 .. raw:: html
 
-   <div id="ref-safe-curves">
+   <div id="ref-twisted">
 
-Bernstein, Daniel J., and Tanja Lange. Accessed February 25, 2018.
-“SafeCurves: Choosing Safe Curves for Elliptic-Curve Cryptography.”
+Bernstein, Daniel J., Peter Birkner, Marc Joye, Tanja Lange, and
+Christiane Peters. n.d. “Twisted Edwards Curves.” Cryptology ePrint
+Archive, Report 2008/013.
 
 .. raw:: html
 
@@ -331,11 +371,10 @@ Bernstein, Daniel J., and Tanja Lange. Accessed February 25, 2018.
 
 .. raw:: html
 
-   <div id="ref-twisted">
+   <div id="ref-safe-curves">
 
-Bernstein, Daniel J., Peter Birkner, Marc Joye, Tanja Lange, and
-Christiane Peters. 2008. “Twisted Edwards Curves.” Cryptology ePrint
-Archive, Report 2008/013.
+Bernstein, Daniel J., and Tanja Lange. n.d. “SafeCurves: Choosing Safe
+Curves for Elliptic-Curve Cryptography.”
 
 .. raw:: html
 
@@ -345,7 +384,7 @@ Archive, Report 2008/013.
 
    <div id="ref-github-barry">
 
-Hat, Barry White. 2018. “Baby-Jubjub Supporting Evidence.” GitHub.
+Hat, Barry White. n.d. “Baby-Jubjub Supporting Evidence.” GitHub.
 
 .. raw:: html
 
@@ -355,9 +394,9 @@ Hat, Barry White. 2018. “Baby-Jubjub Supporting Evidence.” GitHub.
 
    <div id="ref-generation-baby">
 
-Langley, Adam, Mike Hamburg, and Sean Turner. 2016. “Elliptic Curves for
+Langley, Adam, Mike Hamburg, and Sean Turner. n.d. “Elliptic Curves for
 Security.” Request for Comments. RFC 7748; RFC Editor.
-doi:\ `10.17487/RFC7748 <https://doi.org/10.17487/RFC7748>`__.
+https://doi.org/10.17487/RFC7748.
 
 .. raw:: html
 

@@ -82,16 +82,19 @@ iden3_tech_docs = {
 iden3_publications_docs = {  
                'folder': 'publications', 
                'main'  : 'publications.rst',
-               'sub_sections' : ['Research Papers','Presentations'],
-               'maxdepth' : [1,1],
-               'hidden'   : [False,False],
-               'caption'  : ['',''],
+               'sub_sections' : ['Research Papers','Presentations', 'Videos'],
+               'maxdepth' : [1,1,1],
+               'hidden'   : [False,False,False],
+               'caption'  : ['','', ''],
                'docs' : [
                           [
                            'iden3_repos/research', 
                           ],
                           [ 
                             'docs/presentations'
+                          ],
+                          [ 
+                            'docs/videos'
                           ],
                         ]
 }

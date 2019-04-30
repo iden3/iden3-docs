@@ -34,7 +34,7 @@ This documentation site includes the following sections:
 
 * :doc:`Repository Guide <repositories>` : centralizes documentation scattered across different iden3's repos in a single place. 
 
-* :doc:`Publications <publications>` : includes articles and papers authored by iden3.
+* :doc:`Publications <publications>` : includes articles, videos and papers authored by iden3.
 
 During the comming months, we will be sorting, improving and extending the documentation, so don't forget to come back. Thank you!!! 
 

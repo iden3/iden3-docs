@@ -16,3 +16,11 @@ Presentations
    :maxdepth: 1
 
    docs/presentations
+
+Videos
+======
+
+.. toctree::
+   :maxdepth: 1
+
+   docs/videos

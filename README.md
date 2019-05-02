@@ -21,7 +21,7 @@ The surrounding source code is available under [GPL-3.0][license].
 
 ## Building And Offline Use
 
-*The documentation website can easily be built locally either for offline use or for [contribution][] purposes.*
+The documentation website can easily be built locally either for offline use or for [contribution][] purposes.
 
 1. Download/clone github repository
    
@@ -55,7 +55,7 @@ The surrounding source code is available under [GPL-3.0][license].
 
 Anyone is welcome to contribute to the documentation by submitting pull requests to this repository.
 
-*Please read the [contribution guidelines][] first, to allow for smooth collaboration.*
+*Please read the [contribution guidelines][] first, to allow for smooth collaboration. There is also a [FAQ][] document providing further guidelines*
 
 [website-shield]: https://img.shields.io/website/http/docs.iden3.io.svg?down_color=red&down_message=offline&style=flat-square&up_color=green&up_message=online
 [readthedocs-shield]: https://readthedocs.org/projects/pip/badge/
@@ -67,3 +67,4 @@ Anyone is welcome to contribute to the documentation by submitting pull requests
 [install readthedocs]: https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html
 [contribution guidelines]: https://github.com/iden3/iden3-docs/blob/master/CONTRIBUTING.md
 [contribution]: #Contributing
+[FAQ]: https://github.com/iden3/iden3-docs/blob/master/FAQs.md

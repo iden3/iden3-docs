@@ -39,8 +39,8 @@ There are 4 major sections:
 ## Adding docs from Repositories
 
 1. Documents automatically collected from iden3 repos
-  - `iden3_repo` variable in *config/iden3_docmap.py* contains current repos
-  - If you need to add a new repo, copy existing mechanism (create dictionary with info on repo and add it to `iden3_repo` variable)
+   - `iden3_repo` variable in *config/iden3_docmap.py* contains current repos
+   - If you need to add a new repo, copy existing mechanism (create dictionary with info on repo and add it to `iden3_repo` variable)
 2. Explicitly adding document to  `docs` field allows you to control position of document (in order), and aspect (can add some directives in `prepend` field)
 3. Adding document to `dont_publish` field will prevent that document from being published (internal, irrelevant,...)
 

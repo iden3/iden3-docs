@@ -13,11 +13,11 @@ Iden3 is an open source project offering a complete decentralized identity manag
 
 **Enable Self Sovereign Identities**, whereby identities are created, owned and controlled by the user.
 
-**Accesibility**, by promoting the development of open standards and ease of use.
+**Accessibility**, by promoting the development of open standards and ease of use.
 
 **Scalability**, by minimizing the number of accesses to the blockchain that identity management and claim processing requires.   
 
-**Privacy by design** by using including zkSNARKs to prove claims whithout revealing any information other than the validity of the claim.
+**Privacy by design** by using Zero Knowledge Proofs to prove claims without revealing any information other than the validity of the claim.
 
 .. note:: Our team can always use your feedback and help to improve the tutorials and material included. If
           you don't understand something, or cannot find what you are looking for, or have any 

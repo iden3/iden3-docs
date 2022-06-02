@@ -38,7 +38,7 @@ binary trees.
 Motivation
 ==========
 
-Merkle trees allow to link a set of data to a unique has value, which is
+Merkle trees allow to link a set of data to a unique hash value, which is
 very optimal and useful, specially in blockchain technology, as it
 provides a secure and efficient verification of large data sets by
 storing only a little piece of data on-chain. For instance, they can be

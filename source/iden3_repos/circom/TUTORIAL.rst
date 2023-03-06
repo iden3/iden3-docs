@@ -1,3 +1,5 @@
+NOTE: This tutorial is outdated. Instead, use the `Circom 2.0 tutorial <https://docs.circom.io/getting-started/installation/>`_.
+
 ========
 Tutorial
 ========

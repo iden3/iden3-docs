@@ -66,7 +66,8 @@ number!
    content:
 
 ::
-
+   pragma circom 2.0.0;
+   
    template Multiplier() {
        signal private input a;
        signal private input b;

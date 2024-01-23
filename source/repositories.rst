@@ -57,13 +57,13 @@ zkSNARKs related utilities.
      -  Circuit libraries implementedin in circom
    * - snarkjs_
      - zkSNARKs Javascript implementation (setup, proof, verifier and witness generation)
-   * - websnark_ 
+   * - wasmsnark_ 
      - A fast zkSNARKs proof generator written in native Web Assembly
 
 .. _circom: https://github.com/iden3/circom
 .. _circomlib: https://github.com/iden3/circomlib
 .. _snarkjs: https://github.com/iden3/snarkjs
-.. _websnark: https://github.com/iden3/websnrks
+.. _wasmsnark: https://github.com/iden3/wasmsnark
 
 .. toctree::
    :maxdepth: 1
